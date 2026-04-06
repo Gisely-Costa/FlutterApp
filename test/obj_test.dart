@@ -107,11 +107,9 @@ void main() {
     aluno1.id = 1;
     historico1.matricular(aluno1);
     
-    // Teste de média inicial e aprovação
     expect(historico1.media(aluno1), 0.0);
     expect(historico1.isAprovado(aluno1), isFalse); // Média 0 não aprova
 
-    // Simulação de notas para testar a aprovação
     historico1.notas[aluno1] = [7.0, 8.0]; 
     expect(historico1.isAprovado(aluno1), isTrue); // Média 7.5 aprova
 
