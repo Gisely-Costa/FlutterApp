@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'components.dart';
+import 'students_page.dart';
 import 'theme.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       ),
       darkTheme: ThemeData(
         colorScheme: MaterialTheme.lightMediumContrastScheme(),
-      ) ,
+      ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -76,7 +76,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _decrementCounter() {
     setState(() {
-      
       _counter--;
     });
   }
@@ -99,39 +98,50 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      
+
       drawer: Drawer(
-       child: SafeArea(
-         child: ListView(
-           padding: EdgeInsets.zero,
-           children: [
-             DrawerHeader(
-               decoration: BoxDecoration(
-                 color: Theme.of(context).colorScheme.primaryContainer,
-               ),
-               child: Align(
-                 alignment: Alignment.bottomLeft,
-                 child: Text(
-                   'Menu',
-                   style: Theme.of(context).textTheme.headlineSmall,
-                 ),
-               ),
-             ),
-             ListTile(
-               leading: const Icon(Icons.pages),
-               title: const Text('Componentes'),
-               onTap: () {
-                 Navigator.pop(context); // fecha o drawer
-                 Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (_) => const ComponentsPage()),
-                 );
-               },
-             ),
-           ],
-         ),
-       ),
-     ),
+        child: SafeArea(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                ),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    'Menu',
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.pages),
+                title: const Text('Componentes'),
+                onTap: () {
+                  Navigator.pop(context); // fecha o drawer
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const ComponentsPage()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.person),
+                title: const Text('Alunos'),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const StudentsPage()),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
 
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -157,12 +167,11 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-           TextButton(onPressed: _incrementCounter, child: Text('Increment')),
-           TextButton(onPressed: _decrementCounter, child: Text('Decrement')),
+            TextButton(onPressed: _incrementCounter, child: Text('Increment')),
+            TextButton(onPressed: _decrementCounter, child: Text('Decrement')),
           ],
         ),
       ),
-      
     );
   }
 }
